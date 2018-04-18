@@ -4,7 +4,7 @@ int main(void){
   double x, xx, x0, r, K;
   int t;
   x0=1.0;
-  r=0.1;
+  r=3.0;
   K=100.0;
 
   FILE *fp;
