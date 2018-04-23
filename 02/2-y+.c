@@ -3,7 +3,7 @@
 int main(void){
   double x, xx, x250, r, K;
   int t;
-  x250=100.0;
+  x250=10.0;
   K=100.0;
 
   FILE *fp;
@@ -12,6 +12,10 @@ int main(void){
 
   for(r=1.0; r<3.0; r+=0.01){
   x=x250;
+for(t=o; t<300; t++){
+  xx=x+r*(1-x/K)*x;
+  x=xx;
+}
   for(t=251; t<300; t++){
     xx=x+r*(1-x/K)*x;
     fprintf(fp, "%f, %f\n", r, xx);
