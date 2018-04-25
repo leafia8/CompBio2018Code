@@ -8,9 +8,9 @@ int main(void){
   x0=10.0;
   x=x0;
   xa=x0;
-  r=1.3;
+  r=0.8;
   K=100.0;
-  dt=0.01;
+  dt=1.0;
 
   FILE *fp;
   fp=fopen("3-7op.dat","w");
