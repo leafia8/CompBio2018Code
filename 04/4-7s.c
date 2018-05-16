@@ -6,17 +6,17 @@ int main(void){
   double BC,ApD,ADmBC,DD;
 
 
-  a=2.0;
-  b=3.0;
-  c=5.0;
-  d=4.0;
-  e=3.0;
+  a=20.0;
+  b=30.0;
+  c=1.0;
+  d=2.0;
+  e=1.0;
   f=1.0;
 
-A=(-a*b*f-b*c*d)/(b*f-c*e);
-B=(c*c*d+a*c*f)/(b*f-c*e);
-C=(a*e*e+b*d*e)/(b*f-c*e);
-D=(-b*d*f-a*e*f)/(b*f-c*e);
+A=(-a*b*f+b*c*d)/(b*f-c*e);
+B=(c*c*d-a*c*f)/(b*f-c*e);
+C=(a*e*e-b*d*e)/(b*f-c*e);
+D=(-b*d*f+a*e*f)/(b*f-c*e);
 
 BC=B*C;
 ApD=A+D;
