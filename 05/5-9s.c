@@ -47,6 +47,7 @@ for(S=0; S<1000; S++){
         break;
       }
   }
+
 //  printf("%d\n", t+2);
 
   if(Y==100){
