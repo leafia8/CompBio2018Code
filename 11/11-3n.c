@@ -2,6 +2,9 @@
 #include<math.h>
 #define size 100
 
+int ruleu(int x,int y,int u[][size]);
+int rulev(int x,int y,int v[][size]);
+
 int main(){
   int i,j;
   int t;
@@ -9,10 +12,10 @@ int main(){
   double u[size][size],v[size][size];
   double utemp[size][size],vtemp[size][size];
 
-  double Du=4.2,Dv=1.8;
+  double Du=0.8,Dv=0.5;
 
   FILE *fp;
-  fp=fopen("11-2.csv","w");
+  fp=fopen("11-3.csv","w");
 
   //初期化
   for(i=0;i<size;i++){
@@ -23,15 +26,29 @@ int main(){
   }
 
   //初期値入力
-  u[(size/2)-1][(size/2)-1]=1.02;
-  u[(size/2)-1][(size/2)]=0.99;
-  u[(size/2)][(size/2)-1]=1.01;
-  u[(size/2)][(size/2)]=0.98;
+  FILE *inputu;
+  inputu=fopen("rd_u100.csv","r");
+  for(i=0;i<size;i++){
+    for(j=0;j<size;j++){
+      fscanf(inputu,"%f",&u[i][j]);
+      if(j!=size-1){
+        fscanf(inputu,",");
+      }
+    }
+  }
+  fclose(inputu);
 
-  v[(size/2)-1][(size/2)-1]=1.02;
-  v[(size/2)-1][(size/2)]=0.99;
-  v[(size/2)][(size/2)-1]=1.01;
-  v[(size/2)][(size/2)]=0.98;
+  FILE *inputv;
+  inputv=fopen("rd_v100.csv","r");
+  for(i=0;i<size;i++){
+    for(j=0;j<size;j++){
+      fscanf(inputv,"%f",&v[i][j]);
+      if(j!=size-1){
+        fscanf(inputv,",");
+      }
+    }
+  }
+  fclose(inputv);
 
   //初期値出力
   for(i=0;i<size;i++){
@@ -45,6 +62,29 @@ int main(){
   }
 
   for(t=1;t<5000;t++){
+
+for(i=0;i<size;i++){
+  for(j=0;j<size;j++){
+    utemp[i][j]=ruleu(i,j,u);
+    vtemp[i][j]=rulev(i,j,v);
+  }
+}
+
+for(i=0;i<size;i++){
+  for(j=0;j<size;j++){
+    u[i][j]=utemp[i][j];
+    v[i][j]=vtemp[i][j];
+    fprintf(fp,"%d",u[i][j]);
+    if(j!=size-1){
+      fprintf(fp," ,");
+    }
+  }
+  fclose(fp);
+  return 0;
+}
+
+
+
 
   //境界条件
    //i=0,j=0
@@ -108,13 +148,13 @@ int main(){
   }
 
   //更新
-  for(i=0;i<size;i++){
+/*  for(i=0;i<size;i++){
     for(j=0;j<size;j++){
       u[i][j]=utemp[i][j];
       v[i][j]=vtemp[i][j];
     }
   }
-
+*/
   //出力
   if(t%500==0){
     for(i=0;i<size;i++){
