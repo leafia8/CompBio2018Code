@@ -17,25 +17,25 @@ int main(void){
   double e;//外出しているときの感染率
 
   FILE *fp;
-  fp=fopen("output_03.txt","w");
+  fp=fopen("output_00b.csv","w");
 
   dt=1;
   S=60.0;
   E=5.0;
   I=0.0;
   R=0.0;
-  b=0.0025;
-  c=0.00034;
-  e=0.00044;
+  b=0.00263;
+  c=0.25;
+  e=0.00024;
   Ej[0]=E;
   n=0;
   day=84;
-  V=19;
+  V=5;
   close=0;
 
 //初日の状況
   t=0.0;
-  fprintf(fp, "%d, %d\n", Ej[0], 0);
+//  fprintf(fp, "%d, %d\n", Ej[0], 0);
   fprintf(fp,"%f, %f, %f, %f, %f\n", t+1, S, E, I, R);
 
 //1日目の状況
@@ -55,7 +55,7 @@ i=1;
     R=RR;
 
 
-      fprintf(fp, "%d, %d, %f\n", Ej[i], i, j);
+  //    fprintf(fp, "%d, %d, %f\n", Ej[i], i, j);
       fprintf(fp,"%f, %f, %f, %f, %f\n", t+1, S, E, I, R);
 
 //2日目以降の状況
@@ -93,7 +93,7 @@ for(w=0; w<100; w++){
       I=II;
       R=RR;
 
-      fprintf(fp,"%d, %d, %f, %d\n", Ej[i], i, j, 888);
+  //    fprintf(fp,"%d, %d, %f, %d\n", Ej[i], i, j, 888);
       fprintf(fp,"%f, %f, %f, %f, %f\n", t+1, S, E, I, R);
       i=i+1;
     }
@@ -118,7 +118,7 @@ for(w=0; w<100; w++){
         I=II;
         R=RR;
 
-        fprintf(fp,"%d, %d, %f, %d\n", Ej[i], i, j, 888);
+    //    fprintf(fp,"%d, %d, %f, %d\n", Ej[i], i, j, 888);
         fprintf(fp,"%f, %f, %f, %f, %f\n", t+1, S, E, I, R);
         i=i+1;
       }
@@ -140,7 +140,7 @@ for(w=0; w<100; w++){
       I=II;
       R=RR;
 
-      fprintf(fp,"%d, %d, %f, %d\n", Ej[i], i, j, 999);
+  //    fprintf(fp,"%d, %d, %f, %d\n", Ej[i], i, j, 999);
       fprintf(fp,"%f, %f, %f, %f, %f\n", t+1, S, E, I, R);
       i=i+1;
     }
@@ -167,7 +167,7 @@ else{
     I=II;
     R=RR;
 
-    fprintf(fp,"%d, %d, %f, %d\n", Ej[i], i, j, 888);
+//    fprintf(fp,"%d, %d, %f, %d\n", Ej[i], i, j, 888);
     fprintf(fp,"%f, %f, %f, %f, %f\n", t+1, S, E, I, R);
     i=i+1;
   }
@@ -189,7 +189,7 @@ else{
   I=II;
   R=RR;
 
-  fprintf(fp,"%d, %d, %f, %d\n", Ej[i], i, j, 999);
+//  fprintf(fp,"%d, %d, %f, %d\n", Ej[i], i, j, 999);
   fprintf(fp,"%f, %f, %f, %f, %f\n", t+1, S, E, I, R);
   i=i+1;
 }
@@ -222,7 +222,7 @@ for(h=0; h<7; h++){
   R=RR;
   close=close+1;
 
-  fprintf(fp,"%d, %d, %f, %d, %d\n", Ej[i], i, j, 777, close);
+//  fprintf(fp,"%d, %d, %f, %d, %d\n", Ej[i], i, j, 777, close);
   fprintf(fp,"%f, %f, %f, %f, %f\n", t+1, S, E, I, R);
   i=i+1;
 }
